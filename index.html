@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Primecarnifoods Seafood</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/93715cd56f.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <!-- Navbar start -->
+      <div class="navbar bg-base-100 md:px-9">
+        <div class="navbar-start">
+          <img
+            class="h-16"
+            src="./resources/logo/logoo.png"
+            alt="Logo of City Foods Website"
+          />
+          <a
+            href="#"
+            class="text-3xl md:text-4xl font-extrabold font-serif pl-7 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-yellow-400 transition-transform duration-300 hover:scale-105 hover:from-yellow-400 hover:to-orange-500"
+          >
+            Prime Carnis Foods
+          </a>
+        </div>
+        <div class="navbar-center"></div>
+        <div class="navbar-end">
+          <!-- Menu for large screens -->
+          <div class="hidden lg:flex">
+            <ul
+              class="flex space-x-8 text-gray-700 font-bold uppercase tracking-wider text-lg"
+            >
+              <li>
+                <a
+                  onclick="fetchMealsByType('fish')"
+                  class="px-5 py-3 rounded-lg hover:bg-gradient-to-r hover:from-orange-400 hover:to-yellow-400 hover:text-white transition-all duration-300 cursor-pointer"
+                >
+                  Fish
+                </a>
+              </li>
+              <li>
+                <a
+                  onclick="fetchMealsByType('shrimp')"
+                  class="px-5 py-3 rounded-lg hover:bg-gradient-to-r hover:from-orange-400 hover:to-yellow-400 hover:text-white transition-all duration-300 cursor-pointer"
+                >
+                  Shrimp
+                </a>
+              </li>
+              <li>
+                <a
+                  onclick="fetchMealsByType('crab')"
+                  class="px-5 py-3 rounded-lg hover:bg-gradient-to-r hover:from-orange-400 hover:to-yellow-400 hover:text-white transition-all duration-300 cursor-pointer"
+                >
+                  Crab
+                </a>
+              </li>
+              <li>
+                <a
+                  onclick="fetchMealsByType('lobster')"
+                  class="px-5 py-3 rounded-lg hover:bg-gradient-to-r hover:from-orange-400 hover:to-yellow-400 hover:text-white transition-all duration-300 cursor-pointer"
+                >
+                  Lobster
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Dropdown for mobile screens -->
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-lg z-[1] mt-3 w-56 p-3 shadow-lg right-0"
+            >
+              <li>
+                <a
+                  onclick="fetchMealsByType('fish')"
+                  class="font-bold text-lg py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-orange-400 hover:to-yellow-400 hover:text-white transition-all duration-300"
+                >
+                  Fish
+                </a>
+              </li>
+              <li>
+                <a
+                  onclick="fetchMealsByType('shrimp')"
+                  class="font-bold text-lg py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-orange-400 hover:to-yellow-400 hover:text-white transition-all duration-300"
+                >
+                  Shrimp
+                </a>
+              </li>
+              <li>
+                <a
+                  onclick="fetchMealsByType('crab')"
+                  class="font-bold text-lg py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-orange-400 hover:to-yellow-400 hover:text-white transition-all duration-300"
+                >
+                  Crab
+                </a>
+              </li>
+              <li>
+                <a
+                  onclick="fetchMealsByType('lobster')"
+                  class="font-bold text-lg py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-orange-400 hover:to-yellow-400 hover:text-white transition-all duration-300"
+                >
+                  Lobster
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar end -->
+      <!-- Banner start -->
+      <div class="carousel w-full">
+        <div id="slide1" class="carousel-item relative w-full">
+          <div
+            class="hero"
+            style="background-image: url(./resources/banner/banner1.jpg)"
+          >
+            <div class="hero-overlay bg-opacity-60"></div>
+            <div class="hero-content text-neutral-content text-center py-20">
+              <div class="max-w-md">
+                <h1 class="mb-4 text-3xl font-bold uppercase">
+                  Fresh, succulent seafood for every craving.
+                </h1>
+                <p class="mb-4">
+                  Premium fish, shrimp, crab, and lobster for bold and flavorful
+                  dishes.
+                </p>
+                <button
+                  class="btn bg-orange-500 border-none text-white hover:text-black mb-6"
+                >
+                  Explore Categories
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <a href="#slide3" class="btn btn-circle">❮</a>
+            <a href="#slide2" class="btn btn-circle">❯</a>
+          </div>
+        </div>
+        <div id="slide2" class="carousel-item relative w-full">
+          <div
+            class="hero"
+            style="background-image: url(./resources/banner/banner2.jpg)"
+          >
+            <div class="hero-overlay bg-opacity-60"></div>
+            <div class="hero-content text-neutral-content text-center">
+              <div class="max-w-md">
+                <h1 class="mb-4 text-3xl font-bold uppercase">
+                  Comforting, flavorful soups for every season.
+                </h1>
+                <p class="mb-4">
+                  Wholesome, nourishing bowls to satisfy your soul.
+                </p>
+                <button
+                  class="btn bg-orange-500 border-none text-white hover:text-black mb-6"
+                >
+                  Explore Categories
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <a href="#slide1" class="btn btn-circle">❮</a>
+            <a href="#slide3" class="btn btn-circle">❯</a>
+          </div>
+        </div>
+        <div id="slide3" class="carousel-item relative w-full">
+          <div
+            class="hero"
+            style="background-image: url(./resources/banner/banner3.jpg)"
+          >
+            <div class="hero-overlay bg-opacity-60"></div>
+            <div class="hero-content text-neutral-content text-center">
+              <div class="max-w-md">
+                <h1 class="mb-4 text-3xl font-bold uppercase">
+                  Savor the taste of tender, juicy chicken in every bite.
+                </h1>
+                <p class="mb-4">
+                  Perfectly cooked, packed with flavor, and always a favorite.
+                </p>
+                <button
+                  class="btn bg-orange-500 border-none text-white hover:text-black mb-6"
+                >
+                  Explore Categories
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+          >
+            <a href="#slide2" class="btn btn-circle">❮</a>
+            <a href="#slide1" class="btn btn-circle">❯</a>
+          </div>
+        </div>
+      </div>
+      <!-- Banner end-->
+    </header>
+    <main class="w-11/12 mx-auto">
+      <div class="divider">
+        <span
+          id="foodType"
+          class="uppercase text-xl font-serif text-red-text-gray-400"
+          >Placeholder Type Text</span
+        >
+      </div>
+      <section
+        id="card-container"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-6 justify-evenly"
+      >
+        <!--Dynamic Food Cards loads here..-->
+      </section>
+      <!--FAQ Section Start-->
+      <section
+        class="grid md:justify-evenly md:grid-cols-2 mb-8 bg-gradient-to-r from-sky-200 to-indigo-400"
+      >
+        <div class="mt-14">
+          <img
+            class="h-52 lg:h-72 mx-auto"
+            src="resources/faq/faq.png"
+            alt="Image of FAQ"
+          />
+        </div>
+        <div class="mx-5 text-black pb-6">
+          <h1 class="py-6 font-serif text-3xl ml-5">
+            Frequently Asked Questions (FAQ)
+          </h1>
+          <div class="join join-vertical w-full">
+            <div
+              class="collapse collapse-arrow join-item border-base-300 border"
+            >
+              <input type="radio" name="my-accordion-4" checked="checked" />
+              <div class="collapse-title text-xl">
+                Do you offer vegetarian or vegan options?
+              </div>
+              <div class="collapse-content">
+                <p>
+                  Yes, we have a variety of vegetarian and vegan recipes,
+                  especially under categories like soups and potatoes. You can
+                  easily filter these options on our website.
+                </p>
+              </div>
+            </div>
+            <div
+              class="collapse collapse-arrow join-item border-base-300 border"
+            >
+              <input type="radio" name="my-accordion-4" />
+              <div class="collapse-title text-xl">
+                Do you have recipes for people with dietary restrictions?
+              </div>
+              <div class="collapse-content">
+                <p>
+                  Yes, we offer recipes suitable for various dietary needs, such
+                  as gluten-free, dairy-free, low-carb, and more. You can filter
+                  recipes based on your dietary preferences.
+                </p>
+              </div>
+            </div>
+            <div
+              class="collapse collapse-arrow join-item border-base-300 border"
+            >
+              <input type="radio" name="my-accordion-4" />
+              <div class="collapse-title text-xl">
+                How do I contact customer support if I have a question or issue?
+              </div>
+              <div class="collapse-content">
+                <p>
+                  You can reach out to our customer support team via the contact
+                  form on our website or by emailing us at support@cityfoods.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div
+        class="w-full relative bg-cover bg-center min-h-40"
+        style="background-image: url('./resources/footer/footerbg.jpg')"
+      >
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+        <!--3 columns grid-->
+        <div
+          class="grid sm:grid-cols-3 items-center justify-evenly relative z-10 h-full w-11/12 mx-auto"
+        >
+          <!--col-1-->
+          <div class="my-6">
+            <img
+              class="w-32 h-32 mx-auto"
+              src="./resources/logo/logoo.png"
+              alt="Logo"
+            />
+            <p class="text-sm text-justify pt-5 text-white font-serif">
+              This modern food website template is designed using HTML, CSS,
+              ES6, Tailwind CSS,The Meal DB API and Daisy UI. It offers a sleek,
+              responsive layout ideal for restaurants, cafes, or food blogs.
+            </p>
+          </div>
+          <!--col-1 End-->
+          <!--Col 2 Start-->
+          <div class="flex flex-col text-white font-serif sm:py-6 sm:mx-auto">
+            <h1 class="my-3 text-xl font-bold">QUICK LINKS</h1>
+            <a href="#" class="text-sm hover:text-gray-400 leading-7">
+              About Us
+            </a>
+            <a href="#" class="text-sm hover:text-gray-400 leading-7">
+              Features
+            </a>
+            <a href="#" class="text-sm hover:text-gray-400 leading-7">
+              Services
+            </a>
+            <a href="#" class="text-sm hover:text-gray-400 leading-7"> Blog </a>
+            <a href="#" class="text-sm hover:text-gray-400 leading-7">
+              Privacy Policy
+            </a>
+          </div>
+          <!--Col 2 End-->
+          <!--Col 3 Start-->
+          <div class="text-white sm:mx-auto font-serif mt-4">
+            <h1 class="text-xl font-bold">CONTACT INFO</h1>
+            <address class="text-sm mt-3">
+              <p>Address: Noida Sector 16 E Block</p>
+              <p>Contact Number: +91 8929082629</p>
+            </address>
+            <p class="text-sm py-3">
+              Follow us on social media for the latest updates...
+            </p>
+            <div class="flex items-center gap-3">
+              <a href="#"
+                ><img
+                  class="max-w-12"
+                  src="./resources/social/facebook.png"
+                  alt="Icon of Facebook"
+              /></a>
+              <a href="#"
+                ><img
+                  class="max-w-11"
+                  src="./resources/social/twitter.png"
+                  alt="Icon of Twitter"
+              /></a>
+              <a href="#"
+                ><img
+                  class="max-w-12"
+                  src="./resources/social/instagram.png"
+                  alt="Icon of Instagram"
+              /></a>
+              <a href="#"
+                ><img
+                  class="max-w-12"
+                  src="./resources/social/linkedin.png"
+                  alt="Icon of Linkedin"
+              /></a>
+              <a href="#"
+                ><img
+                  class="max-w-14"
+                  src="./resources/social/discord.png"
+                  alt="Icon of Discord"
+              /></a>
+            </div>
+          </div>
+          <!--Col 3 End-->
+        </div>
+      </div>
+      <div class="w-full min-h-16 bg-slate-950 text-white text-center">
+        <p class="pt-5 text-sm font-mono">
+          Copyright &copy; Technexware All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+    <script src="./js/apiscript.js"></script>
+  </body>
+</html>
