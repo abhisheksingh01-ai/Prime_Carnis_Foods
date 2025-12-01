@@ -4,7 +4,6 @@ const fetchMealsByType = (mealType) => {
   foodType.innerText = mealType + " Food Items";
 
   // Using TheMealDB API for seafood items
-  // 'Seafood' category gives various seafood items
   const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood`;
   console.log("Fetching seafood: ", apiUrl);
 
@@ -14,18 +13,20 @@ const fetchMealsByType = (mealType) => {
     .catch((error) => console.error("Error fetching seafood: ", error));
 };
 
-// Display meals (max 10 items)
+// Display meals (max 10 items) with random price in INR
 const displayMeals = (meals, mealType) => {
   console.log("Meal data received: ", meals);
 
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = ""; // Clear previous cards
 
-  // Show only first 10 items
   meals.slice(0, 10).forEach((meal) => {
     const mealCard = document.createElement("div");
     mealCard.classList =
       "card card-compact bg-base-100 w-auto shadow-xl rounded-none";
+
+    // Generate random price in INR between ₹100 and ₹2000
+    const randomPriceINR = Math.floor(Math.random() * (2000 - 100 + 1) + 100);
 
     mealCard.innerHTML = `
       <figure>
@@ -42,11 +43,14 @@ const displayMeals = (meals, mealType) => {
           ${meal.strInstructions ? meal.strInstructions.slice(0, 100) + "..." : ''}
         </p>
         <div class="divider my-0"></div>
-        <div class="mx-auto">
+        <div class="flex justify-evenly">
           <a href="${meal.strSource ? meal.strSource : '#'}" target="_blank"
-             class="btn btn-outline text-orange-600 h-10 min-h-10">
+             class="btn btn-outline text-orange-600 h-12 min-h-12 px-6">
             VIEW DETAILS
           </a>
+          <button class="btn bg-gradient-to-r from-orange-400 to-yellow-400 text-white font-bold h-12 min-h-12 px-6 hover:from-yellow-400 hover:to-orange-400 transition-all duration-300">
+            ₹${randomPriceINR}
+          </button>
         </div>
       </div>
     `;
